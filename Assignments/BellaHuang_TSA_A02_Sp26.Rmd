@@ -1,10 +1,17 @@
 ---
 title: "ENV 790.30 - Time Series Analysis for Energy Data | Spring 2025"
-subtitle: "Assignment 2 - Due date 01/27/26"
 author: "Bella Huang"
-output: pdf_document
+subtitle: "Assignment 2 - Due date 01/27/26"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: true
+header-includes:
+  - \usepackage{fontspec}
+  - \usepackage{xeCJK}
 geometry: margin=2.54cm
 ---
+
 
 ## Submission Instructions
 
@@ -133,18 +140,20 @@ Compute the correlation between these three series. Are they significantly corre
 cor.test(
   energy_ts_ts[, "Total Biomass Energy Production"],
   energy_ts_ts[, "Total Renewable Energy Production"])
-# The correlation coefficient between total biomass energy production and total renewable energy production is 0.965, which means that they have a very strong positive linear relationship. Also, the p-value < 2.2e-16, which means the two series are significantly and strongly correlated.
 
 cor.test(
   energy_ts_ts[, "Total Biomass Energy Production"],
   energy_ts_ts[, "Hydroelectric Power Consumption"])
-# The correlation between total biomass energy production and hydroelectric power consumption is −0.135, which means that they have a weak negative linear relationship. Also, the p-value = 0.0006, meaning that despite being weak in magnitude, the relationship between the two series is statistically different from zero.
 
 cor.test(
   energy_ts_ts[, "Total Renewable Energy Production"],
   energy_ts_ts[, "Hydroelectric Power Consumption"])
-# The correlation between total renewable energy production and hydroelectric power consumption is −0.058, which is very weak. What's more, p-value = 0.142 so the hypothesis test fails to reject the null hypothesis and there is no statistically significant linear correlation between these two series.
 ```
+The correlation coefficient between total biomass energy production and total renewable energy production is 0.965, which means that they have a very strong positive linear relationship. Also, the p-value < 2.2e-16, which means the two series are significantly and strongly correlated.
+
+The correlation between total biomass energy production and hydroelectric power consumption is −0.135, which means that they have a weak negative linear relationship. Also, the p-value = 0.0006, meaning that despite being weak in magnitude, the relationship between the two series is statistically different from zero.
+
+The correlation between total renewable energy production and hydroelectric power consumption is −0.058, which is very weak. What's more, p-value = 0.142 so the hypothesis test fails to reject the null hypothesis and there is no statistically significant linear correlation between these two series.
 
 ## Question 6
 
@@ -161,11 +170,16 @@ HP_acf <- Acf(energy_ts_ts[, "Hydroelectric Power Consumption"], lag.max = 40, p
 BE_acf
 RE_acf
 HP_acf
-# The autocorrelation function for total biomass energy production shows very high positive auto-correlations at all lags, with a very slow decay as the lag increases. Almost all the auto-correation coefficents are significant, which means that this time series has a strong and non-stationary pattern.
-# The ACF of total renewable energy production remains large and positive across all lags with a slow decline. It is very simiar to that of total biomass energy production, indicating a long-term trend.
-# Unlike the other two functions, the hydroelectric power consumption series shows a different autocorrelation structure with a cyclical behavior. The auto-correlations decay more rapidly than in the other two series, suggesting weaker long-term persistence with a strong seasonal trend.
-# Compare: No, the three series do not show similar trend. Although the first two graphs are showing a similar strong positive auto-correlation, the last one is different with a seasonal trend.
+
 ```
+
+The autocorrelation function for total biomass energy production shows very high positive auto-correlations at all lags, with a very slow decay as the lag increases. Almost all the auto-correation coefficents are significant, which means that this time series has a strong and non-stationary pattern.
+
+The ACF of total renewable energy production remains large and positive across all lags with a slow decline. It is very simiar to that of total biomass energy production, indicating a long-term trend.
+
+Unlike the other two functions, the hydroelectric power consumption series shows a different autocorrelation structure with a cyclical behavior. The auto-correlations decay more rapidly than in the other two series, suggesting weaker long-term persistence with a strong seasonal trend.
+
+Compare: No, the three series do not show similar trend. Although the first two graphs are showing a similar strong positive auto-correlation, the last one is different with a seasonal trend.
 
 ## Question 7
 
@@ -181,6 +195,9 @@ HP_pacf <- Pacf(energy_ts_ts[, "Hydroelectric Power Consumption"], lag.max = 40,
 BE_pacf
 RE_pacf
 HP_pacf
-# For biomass and total renewable energy production, their long-time memory patterns are dominated by short-lag dependence, especially lag 1, since their PACF shows a large and significant spike at lag 1 following be much smaller partial auto-correlations at higher lags.
-# For hydroelectric power consumption, the strong long-term trend is dominated by seasonal dynamics, since its PACF shows significant spikes at seasonal lags.
+
 ```
+
+For biomass and total renewable energy production, their long-time memory patterns are dominated by short-lag dependence, especially lag 1, since their PACF shows a large and significant spike at lag 1 following be much smaller partial auto-correlations at higher lags.
+
+For hydroelectric power consumption, the strong long-term trend is dominated by seasonal dynamics, since its PACF shows significant spikes at seasonal lags.

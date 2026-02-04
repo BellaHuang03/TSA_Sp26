@@ -1,0 +1,873 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2.54cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={ENV 790.30 - Time Series Analysis for Energy Data \textbar{} Spring 2025},
+  pdfauthor={Bella Huang},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{ENV 790.30 - Time Series Analysis for Energy Data \textbar{}
+Spring 2025}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Assignment 3 - Due date 02/03/26}
+\author{Bella Huang}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection{Directions}\label{directions}
+
+You should open the .rmd file corresponding to this assignment on
+RStudio. The file is available on our class repository on Github.
+
+Once you have the file open on your local machine the first thing you
+will do is rename the file such that it includes your first and last
+name (e.g., ``LuanaLima\_TSA\_A03\_Sp25.Rmd''). Then change ``Student
+Name'' on line 4 with your name.
+
+Then you will start working through the assignment by \textbf{creating
+code and output} that answer each question. Be sure to use this
+assignment document. Your report should contain the answer to each
+question and any plots/tables you obtained (when applicable).
+
+Please keep this R code chunk options for the report. It is easier for
+us to grade when we can see code and output together. And the tidy.opts
+will make sure that line breaks on your code chunks are automatically
+added for better visualization.
+
+When you have completed the assignment, \textbf{Knit} the text and code
+into a single PDF file. Submit this pdf using Sakai.
+
+\subsection{Questions}\label{questions}
+
+Consider the same data you used for A2 from the spreadsheet
+``Table\_10.1\_Renewable\_Energy\_Production\_and\_Consumption\_by\_Source.xlsx''.
+The data comes from the US Energy Information and Administration and
+corresponds to the December 2025 Monthly Energy Review. This time you
+will work only with the following columns: \textbf{Total Renewable
+Energy Production}; and \textbf{Hydroelectric Power Consumption}.
+
+Create a data frame structure with these two time series only.
+
+R packages needed for this assignment:``forecast'',``tseries'', and
+``Kendall''. Install these packages, if you haven't done yet. Do not
+forget to load them before running your script, since they are NOT
+default packages.\textbackslash{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Load/install required package here}
+\FunctionTok{library}\NormalTok{(forecast)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'quantmod':
+##   method            from
+##   as.zoo.data.frame zoo
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tseries)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Kendall)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(openxlsx)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(cowplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Importing data set}
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/home/guest/R/TSA_Sp26t/TSA_Sp26t/Assignments"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{energy\_data1 }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\AttributeTok{path=}\StringTok{"../Data/Table\_10.1\_Renewable\_Energy\_Production\_and\_Consumption\_by\_Source.xlsx"}\NormalTok{,}\AttributeTok{skip =} \DecValTok{12}\NormalTok{, }\AttributeTok{sheet=}\StringTok{"Monthly Data"}\NormalTok{,}\AttributeTok{col\_names=}\ConstantTok{FALSE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...1`
+## * `` -> `...2`
+## * `` -> `...3`
+## * `` -> `...4`
+## * `` -> `...5`
+## * `` -> `...6`
+## * `` -> `...7`
+## * `` -> `...8`
+## * `` -> `...9`
+## * `` -> `...10`
+## * `` -> `...11`
+## * `` -> `...12`
+## * `` -> `...13`
+## * `` -> `...14`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{read\_col\_names }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\AttributeTok{path=}\StringTok{"../Data/Table\_10.1\_Renewable\_Energy\_Production\_and\_Consumption\_by\_Source.xlsx"}\NormalTok{,}\AttributeTok{skip =} \DecValTok{10}\NormalTok{,}\AttributeTok{n\_max =} \DecValTok{1}\NormalTok{, }\AttributeTok{sheet=}\StringTok{"Monthly Data"}\NormalTok{,}\AttributeTok{col\_names=}\ConstantTok{FALSE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...1`
+## * `` -> `...2`
+## * `` -> `...3`
+## * `` -> `...4`
+## * `` -> `...5`
+## * `` -> `...6`
+## * `` -> `...7`
+## * `` -> `...8`
+## * `` -> `...9`
+## * `` -> `...10`
+## * `` -> `...11`
+## * `` -> `...12`
+## * `` -> `...13`
+## * `` -> `...14`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(energy\_data1) }\OtherTok{\textless{}{-}}\NormalTok{ read\_col\_names}
+
+\NormalTok{energy\_data\_processed }\OtherTok{\textless{}{-}}\NormalTok{ energy\_data1 }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{select}\NormalTok{(}\StringTok{"Month"}\NormalTok{,}
+\StringTok{"Total Renewable Energy Production"}\NormalTok{,}
+\StringTok{"Hydroelectric Power Consumption"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{Month =} \FunctionTok{as.Date}\NormalTok{(Month, }\AttributeTok{format =} \StringTok{"\%Y/\%m/\%d"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(energy\_data\_processed)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Month            Total Renewable Energy Production
+##  Min.   :1973-01-01   Min.   :185.3                    
+##  1st Qu.:1986-03-01   1st Qu.:311.6                    
+##  Median :1999-05-01   Median :348.7                    
+##  Mean   :1999-05-02   Mean   :409.2                    
+##  3rd Qu.:2012-07-01   3rd Qu.:533.0                    
+##  Max.   :2025-09-01   Max.   :812.8                    
+##  Hydroelectric Power Consumption
+##  Min.   : 49.02                 
+##  1st Qu.: 68.89                 
+##  Median : 78.42                 
+##  Mean   : 79.36                 
+##  3rd Qu.: 88.86                 
+##  Max.   :119.40
+\end{verbatim}
+
+\#\#Trend Component
+
+\subsubsection{Q1}\label{q1}
+
+For each series (Total Renewable Production and Hydroelectric
+Consumption) create three plots arranged in a row (side-by-side): (1)
+time series plot, (2) ACF, (3) PACF. Use cowplot::plot\_grid() to place
+them in a grid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ts\_energy\_data }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(energy\_data\_processed[,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{], }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{1973}\NormalTok{,}\DecValTok{1}\NormalTok{),}\AttributeTok{frequency=}\DecValTok{12}\NormalTok{)}
+
+\CommentTok{\# Total Renewable Energy Production}
+\NormalTok{p\_ts }\OtherTok{\textless{}{-}} \FunctionTok{autoplot}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{]) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Total Renewable Energy Production (Monthly)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Year"}\NormalTok{,}\AttributeTok{y =} \StringTok{"Energy Production"}\NormalTok{)}
+\NormalTok{p\_acf }\OtherTok{\textless{}{-}}\NormalTok{ forecast}\SpecialCharTok{::}\FunctionTok{ggAcf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF"}\NormalTok{)}
+
+\NormalTok{p\_pacf }\OtherTok{\textless{}{-}}\NormalTok{ forecast}\SpecialCharTok{::}\FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(}
+\NormalTok{  p\_ts, p\_acf, p\_pacf,}
+  \AttributeTok{nrow =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{align =} \StringTok{"h"}\NormalTok{,}
+  \AttributeTok{axis =} \StringTok{"tb"}\NormalTok{,}
+  \AttributeTok{rel\_widths =} \FunctionTok{c}\NormalTok{(}\FloatTok{2.3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Hydroelectric Power Consumption}
+\NormalTok{p\_ts2 }\OtherTok{\textless{}{-}} \FunctionTok{autoplot}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{]) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \FunctionTok{mean}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{color =} \StringTok{"darkgreen"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Hydroelectric Power Consumption (Monthly)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Year"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Energy Consumption"}\NormalTok{)}
+
+\NormalTok{p\_acf2 }\OtherTok{\textless{}{-}}\NormalTok{ forecast}\SpecialCharTok{::}\FunctionTok{ggAcf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{, }\AttributeTok{plot =} \ConstantTok{TRUE}\NormalTok{,}\AttributeTok{main =} \StringTok{"ACF"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in ggplot2::geom_segment(lineend = "butt", ...): Ignoring unknown
+## parameters: `main`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_pacf2 }\OtherTok{\textless{}{-}}\NormalTok{ forecast}\SpecialCharTok{::}\FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{, }\AttributeTok{plot =} \ConstantTok{TRUE}\NormalTok{,}\AttributeTok{main =} \StringTok{"PACF"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in ggplot2::geom_segment(lineend = "butt", ...): Ignoring unknown
+## parameters: `main`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(}
+\NormalTok{  p\_ts2, p\_acf2, p\_pacf2,}
+  \AttributeTok{nrow =} \DecValTok{1}\NormalTok{,}
+  \AttributeTok{align =} \StringTok{"h"}\NormalTok{,}
+  \AttributeTok{axis =} \StringTok{"tb"}\NormalTok{,    }
+  \AttributeTok{rel\_widths =} \FunctionTok{c}\NormalTok{(}\FloatTok{2.3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+\subsubsection{Q2}\label{q2}
+
+From the plot in Q1, do the series Total Renewable Energy Production and
+Hydroelectric Power Consumption appear to have a trend? If yes, what
+kind of trend? \textgreater{} Answer: From the plots in Q1, Total
+Renewable Energy Production clearly exhibits a strong upward trend, with
+accelerated growth in more recent years. What's more, the ACF remains
+high with very slow decay, which indicates that this serie is
+non-stationary one. On the other hand, Hydroelectric Power Consumption
+fluctuates around a relatively stable mean, with a seasonal factor. In
+addition, the acf and pacf decays quickly from a high value, indicating
+that the serie is more likely to be a stationary one without a strong
+long-term trend.
+
+\subsubsection{Q3}\label{q3}
+
+Use the \emph{lm()} function to fit a linear trend to the two time
+series. Ask R to print the summary of the regression. Interpret the
+regression output, i.e., slope and intercept. Save the regression
+coefficients for further analysis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nobs }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(energy\_data\_processed)}
+\NormalTok{t }\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{:}\NormalTok{nobs}
+
+\NormalTok{lm\_renew }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}
+\NormalTok{  ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{] }\SpecialCharTok{\textasciitilde{}}\NormalTok{ t)}
+\FunctionTok{summary}\NormalTok{(lm\_renew)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = ts_energy_data[, "Total Renewable Energy Production"] ~ 
+##     t)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -154.81  -39.55   12.52   41.49  171.15 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 171.44868    5.11085   33.55   <2e-16 ***
+## t             0.74999    0.01397   53.69   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 64.22 on 631 degrees of freedom
+## Multiple R-squared:  0.8204, Adjusted R-squared:  0.8201 
+## F-statistic:  2883 on 1 and 631 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{beta0\_renew }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(lm\_renew}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{])  }\CommentTok{\# intercept}
+\NormalTok{beta1\_renew }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(lm\_renew}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])  }\CommentTok{\# slope}
+
+\NormalTok{lm\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}
+\NormalTok{  ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{] }\SpecialCharTok{\textasciitilde{}}\NormalTok{ t)}
+\FunctionTok{summary}\NormalTok{(lm\_hydro)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = ts_energy_data[, "Hydroelectric Power Consumption"] ~ 
+##     t)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -30.190 -10.214  -0.715   8.909  39.723 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 83.223802   1.110552  74.939  < 2e-16 ***
+## t           -0.012199   0.003035  -4.019 6.55e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 13.95 on 631 degrees of freedom
+## Multiple R-squared:  0.02496,    Adjusted R-squared:  0.02342 
+## F-statistic: 16.15 on 1 and 631 DF,  p-value: 6.547e-05
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{beta0\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(lm\_hydro}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{])  }\CommentTok{\# intercept}
+\NormalTok{beta1\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(lm\_hydro}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])  }\CommentTok{\# slope}
+\end{Highlighting}
+\end{Shaded}
+
+Total Renewable Energy Production: The slope equals to 0.75, meaning
+that the total renewable energy production increases on average by about
+0.75 units per month. The intercept is 171.45, which means that the
+estimated level of total renewable energy production when t = 0. Thus,
+there is a strong and statistically significant(with p-value:
+\textless{} 2.2e-16) upward linear trend over time. Hydroelectric Power
+Consumption: The slope equals to −0.012, so hydroelectric power
+consumption decreases by about 0.012 units per month on average. The
+intercept is 83.22, hydroelectric power consumption is around 83.22 at t
+= 0. This series has a very slight downward linear trend, but the
+magnitude of the trend is negligible, and the series largely fluctuates
+around a stable mean.
+
+\subsubsection{Q4}\label{q4}
+
+Use the regression coefficients to detrend each series (subtract fitted
+linear trend). Plot detrended series and compare with the original time
+series from Q1. Describe what changed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# detrend using regression coefficients}
+\NormalTok{detrend\_renew }\OtherTok{\textless{}{-}}\NormalTok{ ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{] }\SpecialCharTok{{-}}\NormalTok{ (beta0\_renew }\SpecialCharTok{+}\NormalTok{ beta1\_renew }\SpecialCharTok{*}\NormalTok{ t)}
+\NormalTok{detrend\_hydro }\OtherTok{\textless{}{-}}\NormalTok{ ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{] }\SpecialCharTok{{-}}\NormalTok{ (beta0\_hydro }\SpecialCharTok{+}\NormalTok{ beta1\_hydro }\SpecialCharTok{*}\NormalTok{ t)}
+\NormalTok{ts\_detrend\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(detrend\_renew,}
+                       \AttributeTok{frequency =} \DecValTok{12}\NormalTok{,}
+                       \AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1973}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{ts\_detrend\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(detrend\_hydro,}
+                       \AttributeTok{frequency =} \DecValTok{12}\NormalTok{,}
+                       \AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1973}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\FunctionTok{ggplot}\NormalTok{(energy\_data\_processed,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ t, }\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Total Renewable Energy Production}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =}\NormalTok{ beta0\_renew, }\AttributeTok{slope =}\NormalTok{ beta1\_renew, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ detrend\_renew), }\AttributeTok{color =} \StringTok{"green"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ detrend\_renew), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Total Renewable Energy Production: Original vs Detrended"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Energy Production"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(energy\_data\_processed,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ t, }\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Hydroelectric Power Consumption}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{intercept =}\NormalTok{ beta0\_hydro, }\AttributeTok{slope =}\NormalTok{ beta1\_hydro, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ detrend\_hydro), }\AttributeTok{color =} \StringTok{"green"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_smooth}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ detrend\_hydro), }\AttributeTok{method =} \StringTok{"lm"}\NormalTok{,}
+              \AttributeTok{color =} \StringTok{"orange"}\NormalTok{, }\AttributeTok{se =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Hydroelectric Power Consumption: Original vs Detrended"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Energy Consumption"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-6-2.pdf}
+Total Renewable Energy Production: The original series shows a strong,
+persistent upward trend over time, but detrending successfully removes
+this strong upward trend. Thus, the a series that is approximately
+stationary in mean, showing a fluctuation around 0. Hydroelectric Power
+Consumption: The original series fluctuates around a relatively constant
+level with no obvious long-term trend, and the detrended series still
+looks very similar to the original. Thus, detrending has minimal impact
+on hydroelectric power consumption, confirming that this series does not
+exhibit a strong linear trend.
+
+\subsubsection{Q5}\label{q5}
+
+Plot ACF and PACF for the detrended series and compare with the plots
+from Q1. You may use plot\_grid() again to get them side by side to make
+it easier to compare. Did the plots change? How?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renew {-} ACF}
+\NormalTok{p\_acf\_orig\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{],}
+  \AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_acf\_det\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_detrend\_renew, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Detrended Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_acf\_orig\_renew, p\_acf\_det\_renew, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renew {-} PACF}
+\NormalTok{p\_pacf\_orig\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_pacf\_det\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_detrend\_renew, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Detrended Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_pacf\_orig\_renew, p\_pacf\_det\_renew,}\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Hydro {-} ACF}
+\NormalTok{p\_acf\_orig\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{( ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_acf\_det\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_detrend\_hydro, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Detrended Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_acf\_orig\_hydro, p\_acf\_det\_hydro,}\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-7-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Hydro {-} PACF}
+\NormalTok{p\_pacf\_orig\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_pacf\_det\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_detrend\_hydro,}\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Detrended Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_pacf\_orig\_hydro, p\_pacf\_det\_hydro, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-7-4.pdf}
+
+After detrending, the ACF of the renewable energy series shows reduced
+autocorrelation and a slower decay. So, part of the non-stationarity in
+the original series was coming from a deterministic trend. The PACF also
+shows fewer large spikes and a clearer seasonal effect, but the
+significant autocorrelation remains, suggesting that seasonality and
+short-term dependence still exists.
+
+For hydroelectric power consumption, detrending does not change the ACF
+or PACF by a great amount. The strong seasonal trend remains dominant,
+with a significant short-term change for both. The series is primarily
+driven by seasonality rather than a deterministic trend.
+
+\subsection{Seasonal Component}\label{seasonal-component}
+
+Set aside the detrended series and consider the original series again
+from Q1 to answer Q6 to Q8.
+
+\subsubsection{Q6}\label{q6}
+
+Just by looking at the time series and the acf plots, do the series seem
+to have a seasonal trend? No need to run any code to answer your
+question. Just type in you answer below.
+
+\begin{quote}
+Answer: Total Renewable Energy Production shows a dominant long-term
+upward trend, without any obvious fluctuations. In the ACF, there are
+small bumps at seasonal lags, but they are relatively weak compared to
+the overall persistence caused by the trend, suggesting that seasonality
+is present but not a dominant feature of the series. On the other hand
+for Hydroelectric Power Consumption, the time series displays a
+repeating within-year oscillations. In addition, the ACF exhibits some
+strong spikes at seasonal lags, showing a seasonal behavior. There is a
+strong annual seasonal pattern in hydroelectric power consumption.
+\end{quote}
+
+\subsubsection{Q7}\label{q7}
+
+Use function \emph{lm()} to fit a seasonal means model (i.e.~using the
+seasonal dummies) to the two time series. Ask R to print the summary of
+the regression. Interpret the regression output. From the results, which
+series have a seasonal trend? Do the results match you answer to Q6?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dummies\_renew }\OtherTok{\textless{}{-}} \FunctionTok{seasonaldummy}\NormalTok{(ts\_detrend\_renew)}
+
+\NormalTok{seas\_means\_renew }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(detrend\_renew }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dummies\_renew)}
+\FunctionTok{summary}\NormalTok{(seas\_means\_renew)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = detrend_renew ~ dummies_renew)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -153.09  -36.94   15.01   42.21  155.62 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)         7.320      8.763   0.835   0.4039  
+## dummies_renewJan    5.840     12.334   0.473   0.6360  
+## dummies_renewFeb  -31.525     12.334  -2.556   0.0108 *
+## dummies_renewMar    8.205     12.334   0.665   0.5061  
+## dummies_renewApr   -5.400     12.334  -0.438   0.6617  
+## dummies_renewMay    8.912     12.334   0.723   0.4703  
+## dummies_renewJun   -2.231     12.334  -0.181   0.8565  
+## dummies_renewJul    3.114     12.334   0.252   0.8008  
+## dummies_renewAug   -5.478     12.334  -0.444   0.6571  
+## dummies_renewSep  -31.283     12.334  -2.536   0.0114 *
+## dummies_renewOct  -18.437     12.393  -1.488   0.1373  
+## dummies_renewNov  -19.867     12.393  -1.603   0.1094  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 63.19 on 621 degrees of freedom
+## Multiple R-squared:  0.04701,    Adjusted R-squared:  0.03013 
+## F-statistic: 2.785 on 11 and 621 DF,  p-value: 0.00152
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{beta0\_renew\_seas }\OtherTok{\textless{}{-}}\NormalTok{ seas\_means\_renew}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{]}
+\NormalTok{beta\_renew\_seas  }\OtherTok{\textless{}{-}}\NormalTok{ seas\_means\_renew}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]}
+
+\NormalTok{dummies\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{seasonaldummy}\NormalTok{(ts\_detrend\_hydro)}
+\NormalTok{seas\_means\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(detrend\_hydro }\SpecialCharTok{\textasciitilde{}}\NormalTok{ dummies\_hydro)}
+\FunctionTok{summary}\NormalTok{(seas\_means\_hydro)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = detrend_hydro ~ dummies_hydro)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -34.116  -5.871  -0.555   5.823  32.264 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)        0.3796     1.4030   0.271 0.786811    
+## dummies_hydroJan   4.8900     1.9747   2.476 0.013541 *  
+## dummies_hydroFeb  -2.4641     1.9747  -1.248 0.212573    
+## dummies_hydroMar   7.0794     1.9747   3.585 0.000364 ***
+## dummies_hydroApr   5.5895     1.9747   2.830 0.004798 ** 
+## dummies_hydroMay  14.0676     1.9747   7.124 2.92e-12 ***
+## dummies_hydroJun  10.7799     1.9747   5.459 6.93e-08 ***
+## dummies_hydroJul   4.0156     1.9747   2.033 0.042427 *  
+## dummies_hydroAug  -5.2952     1.9747  -2.681 0.007525 ** 
+## dummies_hydroSep -16.5612     1.9747  -8.386 3.37e-16 ***
+## dummies_hydroOct -16.3534     1.9841  -8.242 1.01e-15 ***
+## dummies_hydroNov -10.7940     1.9841  -5.440 7.67e-08 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 10.12 on 621 degrees of freedom
+## Multiple R-squared:  0.4827, Adjusted R-squared:  0.4735 
+## F-statistic: 52.67 on 11 and 621 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{beta0\_hydro\_seas }\OtherTok{\textless{}{-}}\NormalTok{ seas\_means\_hydro}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{]}
+\NormalTok{beta\_hydro\_seas  }\OtherTok{\textless{}{-}}\NormalTok{ seas\_means\_hydro}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+The results all matches my answer for Q6. For total renewable energy
+production, only two of the monthly dummy coefficients are statistically
+significant. The r-square is less than 5\%, indicates that this series
+does not exhibit a seasonal trend. Then, for hydroelectric power
+consumption, almost all monthly dummy coefficients are statistically
+significant, and the values of the dummy coefficients shows that there
+are usually high consumption in spring/early summer, and relative low in
+late summer/fall. The overall p-value is \textless{} 2.2e-16, showing
+that this series has a strong seasonal trend.
+
+\subsubsection{Q8}\label{q8}
+
+Use the regression coefficients from Q7 to deseason the series. Plot the
+deseason series and compare with the plots from part Q1. Did anything
+change?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nobs }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(detrend\_renew)}
+\NormalTok{renew\_seas\_comp }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(nobs)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{nobs)\{}
+\NormalTok{  renew\_seas\_comp[i] }\OtherTok{\textless{}{-}}\NormalTok{ beta0\_renew\_seas }\SpecialCharTok{+}\NormalTok{ beta\_renew\_seas }\SpecialCharTok{\%*\%}\NormalTok{ dummies\_renew[i,]}
+\NormalTok{\}}
+\NormalTok{hydro\_seas\_comp }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(nobs)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{nobs)\{}
+\NormalTok{  hydro\_seas\_comp[i] }\OtherTok{\textless{}{-}}\NormalTok{ beta0\_hydro\_seas }\SpecialCharTok{+}\NormalTok{ beta\_hydro\_seas }\SpecialCharTok{\%*\%}\NormalTok{ dummies\_hydro[i,]}
+\NormalTok{\}}
+
+\CommentTok{\# deseason detrended renewable series}
+\NormalTok{deseason\_renew }\OtherTok{\textless{}{-}}\NormalTok{ detrend\_renew }\SpecialCharTok{{-}}\NormalTok{ renew\_seas\_comp}
+
+\CommentTok{\# convert to ts object}
+\NormalTok{ts\_deseason\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(deseason\_renew, }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1973}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+
+\FunctionTok{autoplot}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{]) }\SpecialCharTok{+}
+  \FunctionTok{autolayer}\NormalTok{(ts\_deseason\_renew,}
+            \AttributeTok{series =} \StringTok{"Detrended \& Deseasoned"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Total Renewable Energy Production"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Total Renewable Energy Production: Original vs Detrended \& Deseasoned"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# deseason detrended hydro series}
+\NormalTok{deseason\_hydro }\OtherTok{\textless{}{-}}\NormalTok{ detrend\_hydro }\SpecialCharTok{{-}}\NormalTok{ hydro\_seas\_comp}
+\CommentTok{\# convert to ts object}
+\NormalTok{ts\_deseason\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(deseason\_hydro, }\AttributeTok{frequency =} \DecValTok{12}\NormalTok{, }\AttributeTok{start =} \FunctionTok{c}\NormalTok{(}\DecValTok{1973}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+
+\FunctionTok{autoplot}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{]) }\SpecialCharTok{+}
+  \FunctionTok{autolayer}\NormalTok{(ts\_deseason\_hydro,}
+            \AttributeTok{series =} \StringTok{"Detrended \& Deseasoned"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{"Hydroelectric Power Consumption"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Hydroelectric Power Consumption: Original vs Detrended \& Deseasoned"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-9-2.pdf}
+For total renewable energy production, deseasoning alone does not
+substantially change the behavior of the series compared to Q1. So, that
+trend instead of seasonality is the dominant source of non-stationarity
+for this series.
+
+Deseasoning produces a substantial change for hydroelectric power
+consumption, and the time plot becomes much flatter. The strong cycle
+showed in Q1 disappears, and the ACF and PACF no longer contains
+dominant seasonal lags. It confirms that that seasonality was the main
+driver of its dependence structure.
+
+\subsubsection{Q9}\label{q9}
+
+Plot ACF and PACF for the deseason series and compare with the plots
+from Q1. You may use plot\_grid() again to get them side by side. Did
+the plots change? How?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renew {-} ACF}
+\NormalTok{p\_acf\_orig\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{],}\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_acf\_deseason\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_deseason\_renew, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Deseasoned Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_acf\_orig\_renew, p\_acf\_deseason\_renew, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Renew {-} PACF}
+\NormalTok{p\_pacf\_orig\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Total Renewable Energy Production"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_pacf\_deseason\_renew }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{( ts\_deseason\_renew, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Deseasoned Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_pacf\_orig\_renew, p\_pacf\_deseason\_renew, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Hydro {-} ACF}
+\NormalTok{p\_acf\_orig\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_acf\_deseason\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggAcf}\NormalTok{(ts\_deseason\_hydro, }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"ACF: Deseasoned Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_acf\_orig\_hydro, p\_acf\_deseason\_hydro, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-10-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Hydro {-} ACF}
+\NormalTok{p\_pacf\_orig\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_energy\_data[, }\StringTok{"Hydroelectric Power Consumption"}\NormalTok{], }\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Original Series"}\NormalTok{)}
+
+\NormalTok{p\_pacf\_deseason\_hydro }\OtherTok{\textless{}{-}} \FunctionTok{ggPacf}\NormalTok{(ts\_deseason\_hydro,}\AttributeTok{lag.max =} \DecValTok{40}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"PACF: Deseasoned Series"}\NormalTok{)}
+
+\NormalTok{cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p\_pacf\_orig\_hydro, p\_pacf\_deseason\_hydro, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{BellaHuang_TSA_A03_Sp26_files/figure-latex/unnamed-chunk-10-4.pdf}
+
+Compared to the original plots in Q1, deseasoning has little effect on
+the ACF and PACF of total renewable energy production, as the series
+remains dominated by a strong trend and slow autocorrelation decay.
+
+In contrast, deseasoning substantially changes the autocorrelation
+structure of hydroelectric power consumption by removing some of the
+dominant seasonal spikes. As a result, the deseasoned hydro series
+exhibits faster decay and fewer significant lags, indicating that
+seasonality was the primary source of dependence in the original data.
+
+\end{document}
